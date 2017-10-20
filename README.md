@@ -17,6 +17,7 @@
 * Commit & Push
 * Setup IDE / Maven
 * Build & Validate
+* In gitlab, go to Settings > Repository > Protected Branch > master, set "Allowed to push" to "No one"
 * Start Doing Your Work
 
 ## Intellij Setup
