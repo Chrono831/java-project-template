@@ -6,7 +6,7 @@
 
 ## Prerequisites
 
-* java 1.8 (preferred 9.0)
+* java 1.8
 * maven
 
 ## Intended Usage
