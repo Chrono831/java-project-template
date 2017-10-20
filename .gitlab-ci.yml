@@ -1,0 +1,40 @@
+image: maven:3-jdk-9
+stages:
+  - test
+
+before_script:
+  - mvn clean
+
+variables:
+  MAVEN_OPTS: -Dmaven.repo.local=${CI_PROJECT_DIR}/.m2
+
+cache:
+    paths:
+      - .m2/
+
+run-coverage:
+  stage: test
+  script:
+    - "mvn cobertura:clean"
+    - "mvn cobertura:cobertura"
+    - "mvn cobertura:dump-datafile"
+  artifacts:
+    name: "$CI_COMMIT_REF_NAME coverage"
+    paths:
+      - target/site/cobertura
+    expire_in: "1 week"
+  tags:
+    - docker
+
+run-tests:
+  stage: test
+  script:
+    - mvn test
+  artifacts:
+    name: "$CI_COMMIT_REF_NAME test report"
+    paths:
+      - target/surfire-reports
+    when: always
+    expire_in: "1 week"
+  tags:
+    - docker
