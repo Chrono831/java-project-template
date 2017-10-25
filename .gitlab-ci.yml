@@ -41,7 +41,7 @@ run-tests:
   tags:
     - docker
 
-generate-jar:
+latest-jar:
   stage: package
   script:
     - mvn clean package
