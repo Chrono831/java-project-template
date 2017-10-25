@@ -51,3 +51,5 @@ generate-jar:
     name: "$CI_PROJECT_NAME"
     paths:
       - target/*-with-dependencies.jar
+  tags:
+    - docker
