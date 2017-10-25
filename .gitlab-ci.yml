@@ -19,6 +19,7 @@ run-coverage:
     - "mvn cobertura:clean"
     - "mvn cobertura:cobertura"
     - "mvn cobertura:dump-datafile"
+  coverage: '/<coverage line-rate="([^%]*)%"/'
   artifacts:
     name: "$CI_COMMIT_REF_NAME coverage"
     paths:
