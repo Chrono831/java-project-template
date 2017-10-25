@@ -1,6 +1,7 @@
 image: maven:3-jdk-8-alpine
 stages:
   - test
+  - package
 
 before_script:
   - mvn clean
@@ -38,3 +39,14 @@ run-tests:
     expire_in: "1 week"
   tags:
     - docker
+
+generate-jar:
+  stage: package
+  script:
+    - mvn clean package
+  only:
+    - master
+  artifacts:
+    name: "$CI_PROJECT_NAME"
+    paths:
+      - target/*-with-dependencies.jar
